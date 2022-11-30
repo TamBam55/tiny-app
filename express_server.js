@@ -28,6 +28,15 @@ app.post("/urls", (req, res) => {
   console.log('urlDatabase', urlDatabase);// Log the POST request body to the console
   res.send("Ok"); // Respond with 'Ok' (we will replace this)
 });
+
+app.post("/urls/:id/delete", (req, res) => {
+  console.log(req.params.id)
+const id = req.params.id
+delete urlDatabase[id]
+console.log(urlDatabase[id])
+res.redirect("/urls")
+});
+
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
